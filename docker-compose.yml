@@ -1,0 +1,17 @@
+services:
+  LEO:
+    build:
+      context: .
+      args:
+        NS3_VERSION: "3.40"
+        UID: "${HOST_UID:-1000}"
+    image: LEO-ns3:3.40
+    volumes:
+      - .:/workspace
+      - ns3:/opt/ns3
+    working_dir: /workspace
+    tty: true
+    stdin_open: true
+
+volumes:
+  ns3:
